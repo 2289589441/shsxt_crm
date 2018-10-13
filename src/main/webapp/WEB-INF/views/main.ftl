@@ -75,15 +75,15 @@
             </tr>
             <tr>
                 <td>原密码：</td>
-                <td><input type="password" id="oldPassword" name="oldPassword" class="easyui-validatebox" required="true" style="width: 200px"/></td>
+                <td><input type="password" id="oldPassword" name="oldUserPwd" class="easyui-validatebox" required="true" style="width: 200px"/></td>
             </tr>
             <tr>
                 <td>新密码：</td>
-                <td><input type="password" id="newPassword" name="newPassword" class="easyui-validatebox" required="true" style="width: 200px"/></td>
+                <td><input type="password" id="newPassword" name="newUserPwd" class="easyui-validatebox" required="true" style="width: 200px"/></td>
             </tr>
             <tr>
                 <td>确认新密码：</td>
-                <td><input type="password" id="newPassword2" name="confirmPassword" class="easyui-validatebox" required="true" style="width: 200px"/></td>
+                <td><input type="password" id="newPassword2" name="conformUserPwd" class="easyui-validatebox" required="true" style="width: 200px"/></td>
             </tr>
         </table>
     </form>
