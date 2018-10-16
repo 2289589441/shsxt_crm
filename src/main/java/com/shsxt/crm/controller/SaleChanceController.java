@@ -69,14 +69,15 @@ public class SaleChanceController extends BaseController {
     }
 
     /**
-     * 查询更新用户
-     * @param id
+     * 删除操作
+     * @param ids
      * @return
      */
-    @RequestMapping("openModifySaleChanceDialog")
+    @RequestMapping("deleteSaleChance")
     @ResponseBody
-    public ResultInfo openModifySaleChanceDialog(Integer id){
-        SaleChance saleChance = saleChanceService.openModifySaleChanceDialog(id);
-        return success(200,saleChance);
+    public ResultInfo deleteSaleChance(Integer[] ids){
+        saleChanceService.deleteBatch(ids);
+        return success("操作成功");
     }
+
 }

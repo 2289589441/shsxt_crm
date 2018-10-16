@@ -206,4 +206,13 @@
     </where>
 
   </select>
+
+  <!--批量删除-->
+  <update id="deleteBatch">
+    update t_sale_chance set is_valid = 0 where id in (
+    <foreach collection="array" item="item">
+      #{item}
+    </foreach>
+    )
+  </update>
 </mapper>

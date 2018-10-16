@@ -28,7 +28,7 @@
     </thead>
 </table>
 <div id="tb">
-    <a href="javascript:openAddSaleChacneDialog()" class="easyui-linkbutton" iconCls="icon-save" plain="true">添加</a>
+    <a href="javascript:openAddSaleChanceDialog()" class="easyui-linkbutton" iconCls="icon-save" plain="true">添加</a>
     <a href="javascript:openModifySaleChanceDialog()" class="easyui-linkbutton" iconCls="icon-edit" plain="true">更新</a>
     <a href="javascript:deleteSaleChance()" class="easyui-linkbutton" iconCls="icon-remove" plain="true">删除</a>
     <br/>
@@ -57,27 +57,27 @@
         <table style="font-size: 12px;">
             <tr>
                 <td>机会来源:</td>
-                <td><input type="text" id="chanceSource" name="chanceSource"/>${resultInfo.result.chanceSource}</td>
+                <td><input type="text" id="chanceSource" name="chanceSource"/></td>
             </tr>
             <tr>
                 <td>客户名称:</td>
-                <td><input type="text" id="customerName02" class="easyui-validatebox" name="customerName" required="required"/>${resultInfo.result.customerName}</td>
+                <td><input type="text" id="customerName02" class="easyui-validatebox" name="customerName" required="required"/></td>
             </tr>
             <tr>
                 <td>成功几率:</td>
-                <td><input type="text" id="cgjl" name="cgjl"/>${resultInfo.result.cgjl}</td>
+                <td><input type="text" id="cgjl" name="cgjl"/></td>
             </tr>
             <tr>
                 <td>联系人:</td>
-                <td><input type="text" name="linkMan" id="linkMan" class="easyui-validatebox" required="required"/>${resultInfo.result.linkMan}</td>
+                <td><input type="text" name="linkMan" id="linkMan" class="easyui-validatebox" required="required"/></td>
             </tr>
             <tr>
                 <td>联系电话:</td>
-                <td><input type="text" name="linkPhone" id="linkPhone" class="easyui-validatebox" required="required"/>${resultInfo.result.linkPhone}</td>
+                <td><input type="text" name="linkPhone" id="linkPhone" class="easyui-validatebox" required="required"/></td>
             </tr>
             <tr>
                 <td>描述信息:</td>
-                <td><input type="text" id="description" name="description"/>${resultInfo.result.description}</td>
+                <td><input type="text" id="description" name="description"/></td>
             </tr>
             <tr>
                 <td>分配人:</td>
@@ -88,7 +88,7 @@
                 </td>
             </tr>
         </table>
-        <input name="id" id="id" type="hidden" value="${ResultInfo.result.id}"/>
+        <input name="id" id="id" type="hidden" />
     </form>
 </div>
 <div id="bt">
