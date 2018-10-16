@@ -56,86 +56,24 @@ $(function () {
 });
 //打开修改窗口
 function openModifySaleChanceDialog() {
-    var rows = $('#dg').datagrid("getSelections");
-    //console.log(rows);
-    if(rows.length==0){
-        $.messager.alert('来自Crm', "请选择一条数据进行更新");
-        return;
-    }
-    if(rows.length>1){
-        $.messager.alert('来自Crm', "只能选择一条数据进行更新");
-        return;
-    }
-    /***
-     * 1. 回填表单数据
-     * 2. 显示弹窗
-     * */
-    $('#fm').form('load',rows[0]);
-    $('#dlg').dialog('open').dialog("setTitle","更新营销机会");
+    openModifyDialog('dg','fm','dlg','更新营销机会');
+
 }
 
 // 打开添加弹窗
 function openAddSaleChanceDialog() {
-    $('#dlg').dialog('open');
+    openAddOrUpdateDlg('dlg','添加营销机会');
 }
 function closeDlg() {
-    $('#dlg').dialog('close');
+    closeDlgData('dlg');
 }
 // 添加
 function saveOrUpdateSaleChance() {
-    $('#fm').form('submit', {
-        url: ctx + '/saleChance/saveOrUpdateSaleChance',
-        onSubmit: function () {
-            return $(this).form('validate');
-        },
-        success: function (data) {
-            data = JSON.parse(data);
-            if (data.code === 200) {
-                $.messager.alert('来自Crm', data.msg, 'info', function () {
-                    // 关闭弹窗
-                    $('#dlg').dialog('close');
-                    // 刷新数据表格
-                    $('#dg').datagrid('load');
-                });
-            } else {
-                $.messager.alert('来自Crm', data.msg, 'error');
-            }
-        }
-    });
+    saveOrUpdateData('fm',ctx + '/saleChance/saveOrUpdateSaleChance','dg',querySaleChancesByParams);
 }
 /*删除操作*/
 function deleteSaleChance() {
-    var rows = $('#dg').datagrid("getSelections");
-    if(rows.length<=0){
-        $.messager.alert('来自小可爱的提醒', "请选择至少一条数据进行删除");
-        return;
-    }
-    $.messager.confirm('来自小可爱的提醒','您确认想要删除'+rows.length+'条记录吗？',function(r){
-        if (r){
-            var ids = '';
-            for (var i = 0; i <rows.length; i++) {
-                ids += 'ids='+rows[i].id+'&';
-            }
-            console.log(ids)
-            $.ajax({
-                url:ctx +"/saleChance/deleteSaleChance?"+ids,
-                success:function (data) {
-                    if (data.code === 200) {
-                        $.messager.alert('来自小可爱的提醒', data.msg, 'info', function () {
-                            // 关闭弹窗
-                            $('#dlg').dialog('close');
-                            // 刷新数据表格
-                            $('#dg').datagrid('load');
-                        });
-                    } else {
-                        $.messager.alert('来自小可爱的提醒', data.msg, 'error');
-                    }
-
-                }
-            })
-        }
-    });
-
+    deleteData('dg',ctx +'/saleChance/deleteSaleChance',querySaleChancesByParams);
 }
 
 

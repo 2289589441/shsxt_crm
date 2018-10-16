@@ -1,6 +1,7 @@
 package com.shsxt.crm.controller;
 
 import com.shsxt.crm.base.BaseController;
+import com.shsxt.crm.constants.CrmConstant;
 import com.shsxt.crm.model.ResultInfo;
 import com.shsxt.crm.po.SaleChance;
 import com.shsxt.crm.query.SaleChanceQuery;
@@ -12,6 +13,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 
+import javax.annotation.Resource;
 import javax.servlet.http.HttpServletRequest;
 import java.util.Map;
 
@@ -25,7 +27,7 @@ import java.util.Map;
 @Controller
 @RequestMapping("saleChance")
 public class SaleChanceController extends BaseController {
-    @Autowired
+    @Resource
     private SaleChanceService saleChanceService;
 
     /**
@@ -33,8 +35,13 @@ public class SaleChanceController extends BaseController {
      * @return
      */
     @RequestMapping("index")
-    public String index(){
-        return "sale_chance";
+    public String index(Integer state){
+        if (state == null ||state<1) {
+            return "sale_chance";
+        }else if (state==1){
+            return "cus_dev_plan";
+        }
+        return "error";
     }
 
     /**
@@ -80,4 +87,15 @@ public class SaleChanceController extends BaseController {
         return success("操作成功");
     }
 
+    /**
+     * 更新开发状态
+     * @param saleChance
+     * @return
+     */
+    @RequestMapping("updateSaleChanceDevResult")
+    @ResponseBody
+    public ResultInfo updateSaleChanceDevResult(SaleChance saleChance){
+        saleChanceService.updateSaleChanceDevResult(saleChance);
+        return success(CrmConstant.OPS_SUCCESS_MSG);
+    }
 }

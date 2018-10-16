@@ -4,6 +4,9 @@ import com.fasterxml.jackson.annotation.JsonFormat;
 
 import java.util.Date;
 
+/**
+ * @author 康晓伟
+ */
 public class SaleChance {
     private Integer id;
 

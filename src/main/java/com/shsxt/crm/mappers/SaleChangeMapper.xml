@@ -197,7 +197,7 @@
       <if test="null!=state">
         and state=#{state}
       </if>
-      <if test="null!=devResult and ''!=devResult">
+      <if test="null!=devResult">
         and dev_result=#{devResult}
       </if>
       <if test="null!=createDate and ''!=createDate">
@@ -210,9 +210,14 @@
   <!--批量删除-->
   <update id="deleteBatch">
     update t_sale_chance set is_valid = 0 where id in (
-    <foreach collection="array" item="item">
+    <foreach collection="array" item="item" separator=",">
       #{item}
     </foreach>
     )
+  </update>
+
+  <!--更新开发状态-->
+  <update id="updateSaleChanceDevResult" parameterType="saleChance">
+    update t_sale_chance set t_sale_chance.dev_result=#{devResult} where t_sale_chance.id=#{id}
   </update>
 </mapper>

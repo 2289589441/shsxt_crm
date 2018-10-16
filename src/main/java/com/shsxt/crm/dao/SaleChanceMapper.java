@@ -11,5 +11,10 @@ import org.springframework.stereotype.Repository;
 @Repository
 public interface SaleChanceMapper extends BaseDao<SaleChance> {
 
-
+    /**
+     * 更新开发状态
+     * @param saleChance
+     * @return
+     */
+    Integer updateSaleChanceDevResult(SaleChance saleChance);
 }
