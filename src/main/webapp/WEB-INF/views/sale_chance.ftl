@@ -20,10 +20,10 @@
         <th field="description" width="200" align="center">机会描述</th>
         <th field="createMan" width="100" align="center">创建人</th>
         <th field="createDate" width="100" align="center">创建时间</th>
-        <th field="trueName" width="200" align="center">指派人</th>
+        <th field="assignMan" width="200" align="center">指派人</th>
         <th field="assignTime" width="200" align="center">指派时间</th>
-        <th field="state" width="100" align="center" formatter="">分配状态</th>
-        <th field="devResult" width="200" align="center" formatter="">客户开发状态</th>
+        <th field="state" width="100" align="center" formatter="formatterState">分配状态</th>
+        <th field="devResult" width="200" align="center" formatter="formatterDevResult">客户开发状态</th>
     </tr>
     </thead>
 </table>
@@ -57,41 +57,38 @@
         <table style="font-size: 12px;">
             <tr>
                 <td>机会来源:</td>
-                <td><input type="text" id="chanceSource" name="chanceSource"/></td>
+                <td><input type="text" id="chanceSource" name="chanceSource"/>${resultInfo.result.chanceSource}</td>
             </tr>
             <tr>
                 <td>客户名称:</td>
-                <td><input type="text" id="customerName02" class="easyui-validatebox" name="customerName" required="required"/></td>
+                <td><input type="text" id="customerName02" class="easyui-validatebox" name="customerName" required="required"/>${resultInfo.result.customerName}</td>
             </tr>
             <tr>
                 <td>成功几率:</td>
-                <td><input type="text" id="cgjl" name="cgjl"/></td>
+                <td><input type="text" id="cgjl" name="cgjl"/>${resultInfo.result.cgjl}</td>
             </tr>
             <tr>
                 <td>联系人:</td>
-                <td><input type="text" name="linkMan" id="linkMan" class="easyui-validatebox" required="required"/></td>
+                <td><input type="text" name="linkMan" id="linkMan" class="easyui-validatebox" required="required"/>${resultInfo.result.linkMan}</td>
             </tr>
             <tr>
                 <td>联系电话:</td>
-                <td><input type="text" name="linkPhone" id="linkPhone" class="easyui-validatebox" required="required"/></td>
+                <td><input type="text" name="linkPhone" id="linkPhone" class="easyui-validatebox" required="required"/>${resultInfo.result.linkPhone}</td>
             </tr>
             <tr>
                 <td>描述信息:</td>
-                <td><input type="text" id="description" name="description"/></td>
+                <td><input type="text" id="description" name="description"/>${resultInfo.result.description}</td>
             </tr>
             <tr>
                 <td>分配人:</td>
                 <td>
-                    <input type="text" id="assignMan" name="assignMan"/>
-                   <#--
                     <input class="easyui-combobox" id="assignMan" name="assignMan"
                            valueField="id" textField="trueName"
                            url="${ctx}/user/queryCustomerManagers" panelHeight="auto"/>
-                    -->
                 </td>
             </tr>
         </table>
-        <input name="id" id="id" type="hidden"/>
+        <input name="id" id="id" type="hidden" value="${ResultInfo.result.id}"/>
     </form>
 </div>
 <div id="bt">

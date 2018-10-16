@@ -1,7 +1,6 @@
 package com.shsxt.crm.controller;
 
 import com.shsxt.crm.base.BaseController;
-import com.shsxt.crm.exceptions.ParamsException;
 import com.shsxt.crm.model.ResultInfo;
 import com.shsxt.crm.model.UserInfo;
 import com.shsxt.crm.service.UserService;
@@ -11,6 +10,8 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ResponseBody;
 import javax.annotation.Resource;
 import javax.servlet.http.HttpServletRequest;
+import java.util.List;
+import java.util.Map;
 
 /**
  * @author 康晓伟
@@ -32,16 +33,8 @@ public class UserController extends BaseController {
     @RequestMapping("login")
     @ResponseBody
     public ResultInfo login(String userName,String userPwd){
-        try {
             UserInfo userInfo = userService.login(userName, userPwd);
-            return success(userInfo);
-        }catch (ParamsException e) {
-            e.printStackTrace();
-            return  success(300,e.getMsg());
-        } catch (Exception e) {
-            e.printStackTrace();
-            return  success(300,e.getMessage());
-        }
+            return success("登录成功",userInfo);
     }
     @RequestMapping("upDateUserPwd")
     @ResponseBody
@@ -49,16 +42,15 @@ public class UserController extends BaseController {
 
         //获取cookie中的id
         int id = LoginUserUtil.releaseUserIdFromCookie(request);
-        try {
-            userService.upDateUserPwd(userName,oldUserPwd,newUserPwd,conformUserPwd,id);
-            return success("更新成功");
-        }catch (ParamsException e) {
-            e.printStackTrace();
-            return  success(300,e.getMsg());
-        } catch (Exception e) {
-            e.printStackTrace();
-            return  success(300,e.getMessage());
-        }
+        //更新密码
+        userService.upDateUserPwd(userName,oldUserPwd,newUserPwd,conformUserPwd,id);
+        return success("更新成功");
+    }
+
+    @RequestMapping("queryCustomerManagers")
+    @ResponseBody
+    public List<Map<String, Object>> queryCustomerManagers(){
+        return userService.queryCustomerManagers();
     }
 }
 

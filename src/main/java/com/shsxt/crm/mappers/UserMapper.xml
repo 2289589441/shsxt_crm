@@ -21,8 +21,7 @@
     from t_user
     where id = #{id,jdbcType=INTEGER}
   </select>
-
-  <insert id="insert" parameterType="com.shsxt.crm.po.User" >
+  <insert id="save" parameterType="com.shsxt.crm.po.User" >
     insert into t_user
     <trim prefix="(" suffix=")" suffixOverrides="," >
       <if test="id != null" >
@@ -123,4 +122,18 @@
 <update id="upDateUserPwd">
   update t_user set user_pwd=#{newPwd} where id = #{id}
 </update>
+
+  <!--查询客户经理-->
+  <select id="queryCustomerManagers"  resultType="map">
+      SELECT
+      t_user.id AS id,
+      t_user.user_name AS userName,
+      t_user.true_name AS trueName
+      FROM
+      t_user
+      INNER JOIN t_user_role ON t_user.id = t_user_role.user_id
+      INNER JOIN t_role ON t_role.id = t_user_role.role_id
+      WHERE
+      t_role.id = 3
+  </select>
 </mapper>

@@ -34,7 +34,7 @@ public class BaseController {
         if(!StringUtils.isBlank(msg)){
             resultInfo.setMsg(msg);
         }
-        if(code!=null||code>0){
+        if(code>0){
             resultInfo.setCode(code);
         }
         if (result != null) {
@@ -57,7 +57,7 @@ public class BaseController {
      * @return ResultInfo对象
      */
     public ResultInfo success(String msg){
-        return success(null,msg,null);
+        return success(-1,msg,null);
     }
     /**
      * 请求成功返回响应
@@ -65,7 +65,7 @@ public class BaseController {
      * @return ResultInfo对象
      */
     public ResultInfo success(Object result){
-        return success(null,null,result);
+        return success(-1,null,result);
     }
     /**
      * 请求成功返回响应
@@ -93,6 +93,6 @@ public class BaseController {
      * @return ResultInfo对象
      */
     public ResultInfo success(String msg,Object result){
-        return success(null,msg,result);
+        return success(-1,msg,result);
     }
 }

@@ -11,6 +11,9 @@ import org.apache.commons.lang3.StringUtils;
 import org.springframework.stereotype.Service;
 
 import javax.annotation.Resource;
+import java.util.List;
+import java.util.Map;
+import java.util.Objects;
 
 /**
  * @auther: 康晓伟
@@ -73,7 +76,7 @@ public class UserService extends BaseService<User> {
         AssertUtil.isTrue(user==null,"用户名不存在或已注销");
 
         //4 判断密码是否一致
-        AssertUtil.isTrue(!Md5Util.encode(userPwd).equals(user.getUserPwd()),"用户名或密码错误");
+        AssertUtil.isTrue(!Objects.equals(Md5Util.encode(userPwd), user.getUserPwd()),"用户名或密码错误");
 
         return createUserIdStr(user);
     }
@@ -88,5 +91,13 @@ public class UserService extends BaseService<User> {
 
         userInfo.setUserIdStr(UserIDBase64.encoderUserID(user.getId()));
         return userInfo;
+    }
+
+    /**
+     * 查询是客户经理
+     * @return
+     */
+    public List<Map<String, Object>> queryCustomerManagers() {
+        return userMapper.queryCustomerManagers();
     }
 }

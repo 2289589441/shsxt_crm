@@ -6,6 +6,9 @@ import com.shsxt.crm.po.User;
 import org.apache.ibatis.annotations.Param;
 import org.springframework.stereotype.Repository;
 
+import java.util.List;
+import java.util.Map;
+
 /**
  * @author 康晓伟
  */
@@ -26,4 +29,9 @@ public interface UserMapper extends BaseDao<User> {
      */
     Integer upDateUserPwd(@Param("newPwd") String newPwd,@Param("id") Integer id);
 
+    /**
+     * 查询客户经理
+     * @return
+     */
+    List<Map<String, Object>> queryCustomerManagers();
 }

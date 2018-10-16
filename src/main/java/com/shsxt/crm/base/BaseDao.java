@@ -1,17 +1,16 @@
 package com.shsxt.crm.base;
 
-import org.springframework.dao.DataAccessException;
-import java.util.List;
-import java.util.Map;
+ import org.springframework.dao.DataAccessException;
+ import java.util.List;
+ import java.util.Map;
+ /**
 
-/**
  * Created by lp on 2018/1/3.
  */
 public interface BaseDao<T> {
     /**
-     * 添加记录
      * @param entity
-     * @return
+     * @return     * 添加记录
      * @throws DataAccessException
      */
     public  Integer save(T entity) throws DataAccessException;

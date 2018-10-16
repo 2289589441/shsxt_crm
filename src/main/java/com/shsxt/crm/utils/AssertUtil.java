@@ -1,4 +1,5 @@
 package com.shsxt.crm.utils;
+import com.shsxt.crm.exceptions.NotLoginException;
 import com.shsxt.crm.exceptions.ParamsException;
 
 
@@ -19,5 +20,10 @@ public class AssertUtil {
         }
     }
 
+    public  static void isNotLogin(Boolean flag,String msg){
+        if(flag){
+            throw new NotLoginException(msg);
+        }
+    }
 
 }

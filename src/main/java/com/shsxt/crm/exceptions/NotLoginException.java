@@ -1,24 +1,26 @@
 package com.shsxt.crm.exceptions;
 
+
+
 /**
  * Created by lp on 2018/1/3.
  */
-public class ParamsException extends  RuntimeException {
+public class NotLoginException extends  RuntimeException {
     private Integer code= 300;
-    private String msg="操作失败!";
+    private String msg="未登录!";
 
-    public ParamsException( Integer code, String msg) {
+    public NotLoginException(Integer code, String msg) {
         super(msg);
         this.code = code;
         this.msg = msg;
     }
 
-    public ParamsException(Integer code) {
-        super("操作失败");
+    public NotLoginException(Integer code) {
+        super("未登录");
         this.code = code;
     }
 
-    public ParamsException( String msg) {
+    public NotLoginException(String msg) {
         super(msg);
         this.msg = msg;
     }
